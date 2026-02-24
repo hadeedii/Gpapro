@@ -1,50 +1,50 @@
-# Welcome to your Expo app 👋
+# GPAPro
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A simple **offline‑first** SGPA/CGPA calculator built with Expo Router. This version is a clean implementation that **does not require any login or authentication**; all data is stored locally on the device. A future backup/sync feature may be added later, but access is always unrestricted.
 
-## Get started
+## Features
 
-1. Install dependencies
+1. Pick a university (first launch only)
+2. Choose the appropriate grading system automatically
+3. Enter subjects with credit hours and grades
+4. Compute semester GPA (SGPA)
+5. Save semesters locally using `AsyncStorage`
+6. CGPA is updated automatically as you add semesters
+7. Entire state is held under one key (`@future_data`)
 
-   ```bash
-   npm install
-   ```
 
-2. Start the app
+## Project layout
 
-   ```bash
-   npx expo start
-   ```
+```
+app/
+ ├── index.tsx               # root redirect logic
+ ├── university-select.tsx   # first‑time screen
+ ├── dashboard.tsx           # shows CGPA & semester list
+ ├── sgpa.tsx                # add subjects and calculate SGPA
+ └── _layout.tsx             # minimal navigation layout
 
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+src/
+ ├── data/
+ │     universities.ts       # list of colleges + grading type
+ └── utils/
+       gradingTables.ts      # two grading maps
+       calculations.ts       # SGPA/CGPA helpers
+       storage.ts            # AsyncStorage wrapper
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Running the app
 
-## Learn more
+```bash
+npm install                # install dependencies
+npx expo start             # launch Metro/dev server
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+Open on device/emulator via the Expo CLI instructions.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## Next steps
 
-## Join the community
+- Implement optional cloud backup/export
+- Add nicer grade/subject pickers
+- Improve styling and theming
 
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Feel free to read the source in `app/` and `src/` to see how the offline logic works.
