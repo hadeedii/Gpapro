@@ -227,7 +227,7 @@ export default function Dashboard() {
 
         <View style={{ width: '100%', alignItems: 'center', backgroundColor: 'transparent' }}>
           <BannerAd
-            unitId={'ca-app-pub-9696589089251206/6687765337'}
+  
             size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER}
             requestOptions={{
               requestNonPersonalizedAdsOnly: true,
